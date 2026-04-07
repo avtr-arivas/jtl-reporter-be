@@ -8,6 +8,8 @@ import { ApiTokensRoutes } from "./routes/api-token"
 import { UsersRoutes } from "./routes/users"
 import { InitRoutes } from "./routes/init"
 import { GlobalSettings } from "./routes/global-settings"
+import { ChartAnalysisRoutes } from "./routes/chart-analysis"
+
 const env = process.env.ENVIRONMENT
 
 export class Router {
@@ -21,6 +23,8 @@ export class Router {
   private testDataSetup: TestDataSetup
   private initRoutes: InitRoutes
   private globalSettings: GlobalSettings
+  private chartAnalysisRoutes: ChartAnalysisRoutes
+
   constructor() {
     this.projectRoutes = new ProjectRoutes()
     this.scenarioRoutes = new ScenarioRoutes()
@@ -32,6 +36,7 @@ export class Router {
     this.testDataSetup = new TestDataSetup()
     this.initRoutes = new InitRoutes()
     this.globalSettings = new GlobalSettings()
+    this.chartAnalysisRoutes = new ChartAnalysisRoutes()
   }
 
   getRoutes(app) {
@@ -47,5 +52,6 @@ export class Router {
     }
     this.initRoutes.routes(app)
     this.globalSettings.routes(app)
+    this.chartAnalysisRoutes.routes(app)
   }
 }
